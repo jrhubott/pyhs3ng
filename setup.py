@@ -4,13 +4,13 @@ long_description = open("README.md").read()
 
 setuptools.setup(
     name="pyhs3ng",
-    version="0.14",
-    author="Mark Coombes",
-    author_email="mark@markcoombes.ca",
+    version="1.0.0",
+    author="Jason Rhubottom",
+    author_email="jason@rhusoft.com",
     description="Python3 async library for interacting with HomeSeer HS3",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/marthoc/pyhs3",
+    url="https://github.com/jrhubott/pyhs3",
     packages=["pyhs3ng"],
     install_requires=["asyncio", "aiohttp"],
     classifiers=[
