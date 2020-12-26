@@ -57,6 +57,7 @@ HASS_DICTIONARY = {
     "Z-Wave Operating State": GenericOperatingStateSensor,
     "Z-Wave Luminance": GenericLuminanceSensor,
     "Z-Wave Watts": GenericPowerSensor,
+    "Z-Wave Electric Meter": GenericPowerSensor,
     # ZWave Locks
     "Z-Wave Door Lock": ZWaveDoorLock,
     # ZWave Cover
