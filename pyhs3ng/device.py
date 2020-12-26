@@ -6,6 +6,17 @@ from .const import (
     REASON_RECONNECTED,
 )
 
+from .const import (
+    HS_UNIT_CELSIUS,
+    HS_UNIT_FAHRENHEIT,
+    HS_UNIT_LUX,
+    HS_UNIT_PERCENTAGE,
+    HS_UNIT_WATTS,
+    HS_UNIT_KILOWATTS,
+    HS_UNIT_AMPS,
+    HS_UNIT_VOLTS,
+)
+
 
 class HomeSeerDevice:
     """Do not use this class directly, subclass it."""
@@ -133,34 +144,60 @@ class GenericSensor(HomeSeerDevice):
 
 
 class GenericMultiLevelSensor(GenericSensor):
+    _unit_of_measurement = None
+
+    def parse_uom(self):
+        if "Lux" in self.status:
+            return HS_UNIT_LUX
+        if "%" in self.status:
+            return HS_UNIT_PERCENTAGE
+        if "F" in self.status:
+            return HS_UNIT_FAHRENHEIT
+        if "C" in self.status:
+            return HS_UNIT_CELSIUS
+        if "kW" in self.status:
+            return HS_UNIT_KILOWATTS
+        if "W" in self.status:
+            return HS_UNIT_WATTS
+        if "A" in self.status:
+            return HS_UNIT_AMPS
+        if "V" in self.status:
+            return HS_UNIT_VOLTS
+
+        return None
+
+    @property
+    def UnitOfMeasurement(self):
+        if self._unit_of_measurement == None:
+            self._unit_of_measurement = self.parse_uom()
+        return self._unit_of_measurement
+
+
+class GenericBatterySensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericBatterySensor(GenericSensor):
+class GenericHumiditySensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericHumiditySensor(GenericSensor):
+class GenericHumiditySensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericHumiditySensor(GenericSensor):
+class GenericLuminanceSensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericLuminanceSensor(GenericSensor):
+class GenericFanSensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericFanSensor(GenericSensor):
+class GenericOperatingStateSensor(GenericMultiLevelSensor):
     pass
 
 
-class GenericOperatingStateSensor(GenericSensor):
-    pass
-
-
-class GenericPowerSensor(GenericSensor):
+class GenericPowerSensor(GenericMultiLevelSensor):
     pass
 
 
