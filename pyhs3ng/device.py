@@ -51,6 +51,10 @@ class HomeSeerDevice:
         return self._raw["location2"]
 
     @property
+    def associated_devices(self):
+        return self._raw["associated_devices"]
+
+    @property
     def value(self):
         """Return int or float device value as appropriate."""
         if "." in str(self._value):
