@@ -64,6 +64,8 @@ HASS_DICTIONARY = {
     "Z-Wave Barrier Operator": ZWaveBarrierOperator,
     # ZWave Events
     "Z-Wave Central Scene": GenericEvent,
+    # DSC Sensors
+    "BLDSC Plug-In Device": GenericBinarySensor,
 }
 
 
