@@ -52,6 +52,8 @@ class HomeTroller:
         )
         self.devices = {}
         self.all_devices = {}
+        self.root_devices = {}
+        self.child_devices = {}
         self.events = []
 
     @property
@@ -134,6 +136,21 @@ class HomeTroller:
                     )
                 # add to the all device list
                 self.all_devices[dev.ref] = dev
+
+                # check for associated devices
+                associated = dev.associated_devices
+                if len(associated) == 0:
+                    self.root_devices[dev.ref] = dev
+                else:
+                    self.child_devices[dev.ref] = dev
+
+            # setup relationships
+            for ref in self.child_devices:
+                d = self.child_devices[ref]
+                # only handle single relationship
+                if len(d.associated_devices) == 1:
+                    d._set_root(self.all_devices[d.associated_devices[0]])
+
         except TypeError:
             _LOGGER.error("Error retrieving HomeSeer devices!")
 

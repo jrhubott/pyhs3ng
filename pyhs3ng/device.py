@@ -33,6 +33,7 @@ class HomeSeerDevice:
         self._value_update_callback = None
         self._suppress_value_update_callback = False
         self._get_control_values()
+        self._root = self
 
     @property
     def ref(self):
@@ -51,10 +52,6 @@ class HomeSeerDevice:
         return self._raw["location2"]
 
     @property
-    def associated_devices(self):
-        return self._raw["associated_devices"]
-
-    @property
     def value(self):
         """Return int or float device value as appropriate."""
         if "." in str(self._value):
@@ -68,6 +65,21 @@ class HomeSeerDevice:
     @property
     def status(self):
         return self._raw["status"]
+
+    @property
+    def interface_name(self):
+        return self._raw["interface_name"]
+
+    @property
+    def associated_devices(self):
+        return self._raw["associated_devices"]
+
+    @property
+    def root(self):
+        return self._root
+
+    def _set_root(self, device):
+        self._root = device
 
     def _get_control_values(self):
         for item in self._control_data:
@@ -178,10 +190,6 @@ class GenericMultiLevelSensor(GenericSensor):
 
 
 class GenericBatterySensor(GenericMultiLevelSensor):
-    pass
-
-
-class GenericHumiditySensor(GenericMultiLevelSensor):
     pass
 
 
