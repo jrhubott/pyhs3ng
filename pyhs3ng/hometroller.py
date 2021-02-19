@@ -10,6 +10,8 @@ from aiohttp import BasicAuth, ContentTypeError
 from typing import Union
 
 import logging
+import json
+
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -113,8 +115,12 @@ class HomeTroller:
 
     async def _get_devices(self):
         try:
+            _LOGGER.debug("_get_devices()")
+
             params = {"request": "getstatus"}
             result = await self._request("get", params=params)
+
+            _LOGGER.debug(json.dumps(result, indent=2))
 
             all_devices = result["Devices"]
 

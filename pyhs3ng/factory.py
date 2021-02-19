@@ -12,6 +12,7 @@ _LOGGER = logging.getLogger(__name__)
 from .device import (
     GenericBatterySensor,
     GenericBinarySensor,
+    GenericDevice,
     GenericEvent,
     GenericFanSensor,
     GenericHumiditySensor,
@@ -77,6 +78,6 @@ def get_device(raw, control_data, request):
         type = HASS_DICTIONARY[device_type]
         return type(raw, control_data, request)
     except KeyError:
-        return None
+        return GenericDevice(raw, control_data, request)
 
     return None

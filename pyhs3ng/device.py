@@ -118,6 +118,30 @@ class HomeSeerDevice:
             self._value_update_callback()
 
 
+class GenericDevice(HomeSeerDevice):
+    @property
+    def is_on(self):
+        return self.value > self._off_value
+
+    async def on(self):
+        params = {
+            "request": "controldevicebyvalue",
+            "ref": self.ref,
+            "value": self._on_value,
+        }
+
+        await self._request("get", params=params)
+
+    async def off(self):
+        params = {
+            "request": "controldevicebyvalue",
+            "ref": self.ref,
+            "value": self._off_value,
+        }
+
+        await self._request("get", params=params)
+
+
 class GenericSwitch(HomeSeerDevice):
     @property
     def is_on(self):
