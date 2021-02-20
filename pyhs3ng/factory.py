@@ -41,6 +41,7 @@ HASS_DICTIONARY = {
     # Insteon multilevel switch
     "Insteon Dual-Band SwitchLinc Dimmer": InsteonSwitchMultilevel,
     "Insteon KeypadLinc V2 Dimmer Button A/Load": InsteonSwitchMultilevel,
+    "Insteon Dual-Band FanLinc Light": InsteonSwitchMultilevel,
     # Insteon sensors
     "Insteon I/O Linc Input Sensor": GenericBinarySensor,
     # ZWave switch
