@@ -29,6 +29,7 @@ HASS_DICTIONARY = {
     # Insteon switchs
     "Insteon Dual-Band SwitchLinc On/Off": InsteonSwitch,
     "Insteon Outdoor ApplianceLinc": InsteonSwitch,
+    "Insteon Dual-band Outdoor Module": InsteonSwitch,
     "ApplianceLinc": InsteonSwitch,
     "Insteon KeypadLinc V2 Dimmer Button B": InsteonSwitch,
     "Insteon KeypadLinc V2 Dimmer Button C": InsteonSwitch,
@@ -42,6 +43,7 @@ HASS_DICTIONARY = {
     "Insteon Dual-Band SwitchLinc Dimmer": InsteonSwitchMultilevel,
     "Insteon KeypadLinc V2 Dimmer Button A/Load": InsteonSwitchMultilevel,
     "Insteon Dual-Band FanLinc Light": InsteonSwitchMultilevel,
+    "Insteon Dual-Band A19 LED Bulb": InsteonSwitchMultilevel,
     # Insteon sensors
     "Insteon I/O Linc Input Sensor": GenericBinarySensor,
     # ZWave switch
